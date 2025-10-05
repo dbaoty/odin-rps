@@ -4,6 +4,7 @@
     <title>Odin - Rock, Paper, Scissors</title>
     <script>
         // console.log("Hello World");
+
         function getComputerChoice() {
             const strings = ["rock", "paper", "scissors"];
             return strings[Math.floor(Math.random() * strings.length)];
@@ -69,6 +70,8 @@
                 "Tie Game!!" : (humanScore > computerScore) ?
                     "You Win!!" : "You Lose!!";
         }
+
+        playGame();
     </script>
 </head>
 <body>
