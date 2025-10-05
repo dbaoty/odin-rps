@@ -3,7 +3,72 @@
 <head>
     <title>Odin - Rock, Paper, Scissors</title>
     <script>
-        console.log("Hello World");
+        // console.log("Hello World");
+        function getComputerChoice() {
+            const strings = ["rock", "paper", "scissors"];
+            return strings[Math.floor(Math.random() * strings.length)];
+        }
+
+        function getHumanChoice() {
+            let choice = "";
+            while (choice = prompt("Pick: ")) {
+                choice = choice.toLowerCase();
+                if (choice === "rock" || choice === "paper" || choice === "scissors") {
+                    return choice;
+                }
+            }
+        }
+
+        let humanScore = 0;
+        let computerScore = 0;
+
+        function playRound(humanChoice, computerChoice) {
+            switch (humanChoice) {
+                case "rock": {
+                    if (computerChoice === "rock") {
+                        console.log("Tie!")
+                    } else if (computerChoice === "paper") {
+                        console.log("You lose! Paper beats Rock");
+                        computerScore += 1;
+                    } else {
+                        console.log("You win! Rock beats Scissors");
+                        humanScore += 1;
+                    }
+                } break;
+                case "paper": {
+                    if (computerChoice === "rock") {
+                        console.log("You win! Paper beats Rock");
+                        humanScore += 1;
+                    } else if (computerChoice === "paper") {
+                        console.log("Tie!");
+                    } else {
+                        console.log("You lose! Scissors beat Paper");
+                        computerScore += 1;
+                    }
+                } break;
+                case "scissors": {
+                    if (computerChoice === "rock") {
+                        console.log("You lose! Rock beats Scissors");
+                        computerScore += 1;
+                    } else if (computerChoice === "paper") {
+                        console.log("You win! Scissors beats Paper");
+                        humanScore += 1;
+                    } else {
+                        console.log("Tie!");
+                    }
+                } break;
+            }
+        }
+
+        function playGame() {
+            let rounds = 5;
+            for (let i = 0; i < rounds; i++) {
+                playRound(getHumanChoice(), getComputerChoice());
+            }
+            return (humanScore === computerScore) ?
+                "Tie Game!!" : (humanScore > computerScore) ?
+                    "You Win!!" : "You Lose!!";
+        }
     </script>
 </head>
 <body>
